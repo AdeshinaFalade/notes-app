@@ -41,19 +41,22 @@ namespace notes_app
             // Replace the contents of the view with that element
             var holder = viewHolder as NoteAdapterViewHolder;
             //holder.TextView.Text = items[position];
-            holder.textTitle.Text = GetValue(note.title);
-            holder.txtContent.Text = GetTime(note.content);
+            holder.textTitle.Text = GetValue(note.content);
+            holder.txtContent.Text = note.content;
             holder.txtTime.Text = note.time;
         }
         private string GetValue(string title)
         {
             string value = string.Empty;
-            var array = title.Split('\n');
+            var array = title.Split(" ");
             if (array.Count() > 0)
             {
-                value = array[0];
-
+                for (int i = 0; i < array.Count(); i++)
+                {
+                    value += array[i] + " ";
+                }
             }
+            
 
             return value;
         }
@@ -61,13 +64,15 @@ namespace notes_app
         private string GetTime(string title)
         {
             string value = string.Empty;
-            var array = title.Split('\n');
-            if (array.Count() > 1)
+            var array = title.Split(" ");
+            if (array.Count() > 10)
             {
-                value = array[1];
-
+                for (int i = 10; i < array.Count(); i++)
+                {
+                    value += array[i] + " ";
+                }
             }
-            else
+            else 
                 value = "No additional data";
             return value;
         }

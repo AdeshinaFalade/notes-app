@@ -15,7 +15,7 @@ namespace notes_app
     [Activity(Label = "Note_Activity")]
     public class Note_Activity : Activity
     {
-        
+        public static string contents;
         EditText editText;
         TextView textTitle;
         TextView txtTime;
@@ -23,7 +23,7 @@ namespace notes_app
 
 
         public static ISharedPreferences pref = Application.Context.GetSharedPreferences("note", FileCreationMode.Private);
-        ISharedPreferencesEditor editor;
+        public static ISharedPreferencesEditor editor;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -33,15 +33,13 @@ namespace notes_app
             editText = FindViewById<EditText>(Resource.Id.edtNote);
             textTitle = FindViewById<TextView>(Resource.Id.textTitle);
             txtTime = FindViewById<TextView>(Resource.Id.txtTime);
+            editText.Text = Intent.GetStringExtra("id");
 
         }
         public override void OnBackPressed()
         {
-            string contents, title, time;
+            string  time;
             contents = editText.Text;
-           
-            
-            //title = contents.Substring(0,5);
             time = DateTime.Now.ToShortDateString();
             Note note = new Note();
             note.content = contents;
@@ -74,6 +72,7 @@ namespace notes_app
                     string jsonString = JsonConvert.SerializeObject(MainActivity.listOfNotes);
                     editor.PutString("note", jsonString);
                     editor.Apply();
+
                 }
                 base.OnBackPressed();
             }
