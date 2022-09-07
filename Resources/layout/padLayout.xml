@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:background="@android:color/black"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="September 6, 2022 at 1:03 PM"
+        android:textColor="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:id="@+id/textView1" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/edtNote"
+        android:textColor="@android:color/white"
+        android:inputType="textMultiLine"
+        android:gravity="top|left"
+        android:background="@android:color/black"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>
