@@ -18,7 +18,7 @@ namespace notes_app
         public static string contents;
         EditText editText;
         TextView textTitle;
-        TextView txtTime;
+        TextView txtNoteTime;
 
 
 
@@ -32,8 +32,9 @@ namespace notes_app
             SetContentView(Resource.Layout.padLayout);
             editText = FindViewById<EditText>(Resource.Id.edtNote);
             textTitle = FindViewById<TextView>(Resource.Id.textTitle);
-            txtTime = FindViewById<TextView>(Resource.Id.txtTime);
+            txtNoteTime = FindViewById<TextView>(Resource.Id.txtNoteTime);
             editText.Text = Intent.GetStringExtra("id");
+            txtNoteTime.Text = DateTime.Now.ToLongDateString();
 
         }
         public override void OnBackPressed()

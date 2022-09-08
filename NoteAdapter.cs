@@ -41,42 +41,28 @@ namespace notes_app
             // Replace the contents of the view with that element
             var holder = viewHolder as NoteAdapterViewHolder;
             //holder.TextView.Text = items[position];
-            holder.textTitle.Text = GetValue(note.content);
-            holder.txtContent.Text = note.content;
+            holder.textTitle.Text = note.content;
+            holder.txtContent.Text = GetValue(note.content);
             holder.txtTime.Text = note.time;
         }
         private string GetValue(string title)
         {
             string value = string.Empty;
             var array = title.Split(" ");
-            if (array.Count() > 0)
+            if (array.Count() > 15)
             {
-                for (int i = 0; i < array.Count(); i++)
+                for (int i = 10; i < 15; i++)
                 {
                     value += array[i] + " ";
                 }
             }
-            
+            else
+                value = "No additional content";
 
             return value;
         }
 
-        private string GetTime(string title)
-        {
-            string value = string.Empty;
-            var array = title.Split(" ");
-            if (array.Count() > 10)
-            {
-                for (int i = 10; i < array.Count(); i++)
-                {
-                    value += array[i] + " ";
-                }
-            }
-            else 
-                value = "No additional data";
-            return value;
-        }
-
+       
         public override int ItemCount => NoteList.Count;
 
         void OnClick(NoteAdapterClickEventArgs args) => ItemClick?.Invoke(this, args);

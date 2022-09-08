@@ -43,7 +43,7 @@ namespace notes_app
             }
             else
             {
-                txtPlaceholder.Visibility = Android.Views.ViewStates.Visible;
+                txtPlaceholder.Visibility = Android.Views.ViewStates.Gone;
             }
         }
 
