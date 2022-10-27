@@ -27,7 +27,7 @@ namespace notes_app
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            
             // Create your application here
             SetContentView(Resource.Layout.padLayout);
             editText = FindViewById<EditText>(Resource.Id.edtNote);
